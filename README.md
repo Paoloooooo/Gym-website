@@ -8,3 +8,5 @@ As of today, the website doesn't permit to cancel or edit users, courses, and ad
 The credentials that the site uses to access the DB are user 'www' with password 'tsw2022', while the DB name is 'tsw' and is run in localhost. To change their values you have to edit the file "connect db.php". By default the DB is empty so you can create at least an admin using the page "admin.php", not reachable by normal navigation on the site and is totally unsafe to use, so use it once and delete it. 
 
 Watch out for the 'cf' field on the login and registration page, it is set to be used in Italy and all the checks are specific to this region.  
+
+This website was made as a project for the exam "Tecnologie software per il web" at the University of Salerno (Unisa), in software engineering degree course.
