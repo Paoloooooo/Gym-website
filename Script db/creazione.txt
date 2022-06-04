@@ -1,0 +1,62 @@
+DROP TABLE if exists amministratori cascade;
+DROP TABLE if exists utenti cascade;
+DROP TABLE if exists corsi cascade;
+DROP TABLE if exists iscritti cascade;
+DROP TABLE if exists bacheca cascade;
+DROP DOMAIN if exists dom_sesso cascade;
+DROP FUNCTION if exists controlla_posti();
+CREATE DOMAIN dom_sesso as char(1)
+CHECK(VALUE='M' or VALUE='F');
+CREATE TABLE amministratori (
+CF char(16) primary key,
+nome varchar(30) NOT NULL,
+cognome varchar(30) NOT NULL,
+password varchar(255) NOT NULL
+);
+CREATE TABLE utenti (
+CF char(16) primary key,
+nome varchar(30) NOT NULL,
+cognome varchar(30) NOT NULL,
+nascita date NOT NULL,
+iscrizione date NOT NULL,
+residenza varchar(100) NOT NULL,
+sesso dom_sesso NOT NULL,
+password varchar(255) NOT NULL
+);
+CREATE TABLE corsi (
+id serial primary key,
+nome varchar(30) NOT NULL,
+posti_tot integer NOT NULL,
+image varchar(1000) NOT NULL,
+descrizione varchar(1000) NOT NULL,
+CONSTRAINT Check_posti check(posti_tot > 0)
+);
+CREATE TABLE iscritti (
+corso integer,
+utente char(16),
+CONSTRAINT fk_utente foreign key (utente) references utenti(CF) on update
+cascade on delete restrict,
+CONSTRAINT fk_corso foreign key (corso) references corsi(id) on update
+cascade on delete restrict,
+Primary key (corso, utente)
+);
+CREATE TABLE bacheca (
+data timestamp,
+titolo varchar(60),
+testo varchar(1000),
+Primary key (data)
+);
+CREATE FUNCTION controlla_posti() RETURNS TRIGGER AS $$
+BEGIN
+if((select count(*) from iscritti i where i.corso=NEW.corso)>(select
+posti_tot from corsi c where c.id=NEW.corso)) then
+raise exception 'Corso pieno';
+
+end if;
+RETURN NULL;
+END $$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER verifica_posti after INSERT or UPDATE on iscritti for each row
+EXECUTE PROCEDURE controlla_posti();
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO www;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO www;
