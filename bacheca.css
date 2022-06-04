@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Open sans' sans-serif;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.news-section {
+    width: 100%;
+}
+
+.section-content {
+    width: 85%;
+    margin: 20px auto;
+}
+
+.news-section .section-content .posts .post {
+    width: 100%;
+    height: auto;
+}
+
+.news-section .section-content .posts .post .article {
+    padding: 15px 20px;
+    width: 100%;
+}
+
+.news-section .section-content .posts .post .article .title {
+    font-size: 24px;
+    color: #4a4a4a;
+    text-transform: uppercase;
+}
+
+.news-section .section-content .posts .post .article p {
+    font-size: 16px;
+    margin: 10px 0px;
+    color: #6a6a6a;
+}
+
+.news-section .section-content .posts .post .article .posted-date{
+    font-weight: 600;
+    position: flex;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    padding-top: 1px;
+    padding-bottom: 20px;
+}
+
+.container .page-title {
+    color: #4a4a4a;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.numb-picker {
+    margin-left: 120px;
+}
+
+.numb-picker input {
+    width: 40px;
+}
+
+.form-container {
+    width: 100%;
+}
+
+.input-field1, .input-field2, .submit-field {
+    text-align: center;
+    padding: 5px;
+}
+
+.input-field2 textarea {
+    resize: none;
+}
+
+#insert {
+    text-align: center;
+    padding: 10px;
+}
+
+.pulsanti {
+    text-align: center;
+    padding: 3px;
+}
+
+.next {
+    margin-left: 5px;
+}
+
+.prev {
+    margin-right: 5px;
+}

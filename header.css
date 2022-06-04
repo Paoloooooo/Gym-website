@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    transition: all 0.3s linear;
+    outline: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+nav {
+    padding: 2% 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 80px;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+nav .logo {
+    color: #0082e6;
+    font-size: 3rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+nav .logo :visited {
+    color: #0082e6;
+}
+
+nav .navigation {
+    padding-left: 0;
+}
+
+nav .navigation li {
+    display: inline-block;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+}
+
+nav .navigation li a {
+    color: black;
+}
+
+.navigation .active {
+    color: #0082e6;
+}
+
+nav .navigation li a:hover {
+    color: #0082e6;
+}
+
+nav .open,
+.close {
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: black;
+    display: none;
+}
+
+@media (max-width:850px) {
+    nav .navigation {
+        height: 25rem;
+        width: 60%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        border-radius: 1.2rem;
+        background-color: white;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 9999;
+    }
+
+    nav .navigation li {
+        font-size: 1.8rem;
+        margin: 0.5rem;
+    }
+
+    nav .navigation li a {
+        color: black;
+    }
+
+    nav .open,
+    nav .navigation .close {
+        display: block;
+        position: absolute;
+        top: 1.8rem;
+        right: 1.8rem;
+    }
+}
